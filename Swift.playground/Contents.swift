@@ -29,4 +29,4 @@ label.font = UIFont.systemFont(ofSize: 14)
 
 let scale: CGFloat = 320 / 414
 label.font.pointSize
-label.fontSizeScale(scale, originalSize: 14, delta: 14)
+label.fontSizeScale(scale, originalSize: 14)
