@@ -32,8 +32,21 @@ extension CGFloat {
 
 
 let label = UILabel()
-label.font = UIFont.systemFont(ofSize: 14)
-
 let scale: CGFloat = 320 / 414
+
+// 使用 UILabel extension
+label.font = UIFont.systemFont(ofSize: 14)
 label.font.pointSize
 label.fontSizeScale(scale, originalSize: 14)
+
+// 使用 UIFont.pointSizeScaled
+label.font = UIFont.systemFont(ofSize: 14)
+label.font = label.font.pointSizeScaled(scale)
+label.font.pointSize
+
+let textField = UITextField()
+
+// 使用 UIFont.pointSizeScaled
+textField.font = UIFont.systemFont(ofSize: 14)
+textField.font = textField.font?.pointSizeScaled(scale)
+textField.font?.pointSize
