@@ -3,9 +3,9 @@
 import UIKit
 
 extension UILabel {
-    @discardableResult func fontSizeScale(_ scale: CGFloat, originalSize: CGFloat = .nan, delta: CGFloat = .nan) -> CGFloat {
-        let pointSize = originalSize.isNaN ? font.pointSize : originalSize
-        let scaledSize = pointSize.scale(scale, delta: delta.isNaN ? pointSize : delta, roundingRule: nil)
+    @discardableResult func fontSizeScale(_ scale: CGFloat, originalSize: CGFloat? = nil, delta: CGFloat? = nil) -> CGFloat {
+        let pointSize = originalSize ?? font.pointSize
+        let scaledSize = pointSize.scale(scale, delta: delta ?? pointSize, roundingRule: nil)
         font = font.withSize(scaledSize)
         return scaledSize
     }
