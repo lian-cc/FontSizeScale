@@ -3,11 +3,13 @@
 import UIKit
 
 extension UILabel {
-    @discardableResult func fontSizeScale(_ scale: CGFloat, originalSize: CGFloat? = nil, delta: CGFloat? = nil) -> CGFloat {
-        let pointSize = originalSize ?? font.pointSize
-        let scaledSize = pointSize.scale(scale, delta: delta ?? pointSize, roundingRule: nil)
+    func fontSizeScale(_ scale: CGFloat, originalSize: CGFloat, delta: CGFloat? = nil) {
+        let scaledSize = originalSize.scale(scale, delta: delta ?? originalSize, roundingRule: nil)
         font = font.withSize(scaledSize)
-        return scaledSize
+    }
+
+    func fontSizeScale(_ scale: CGFloat, delta: CGFloat? = nil) {
+        font = font.pointSizeScaled(scale, delta: delta)
     }
 }
 
@@ -15,6 +17,10 @@ extension UIFont {
     func pointSizeScaled(_ scale: CGFloat, delta: CGFloat? = nil) -> UIFont {
         let scaledSize = pointSize.scale(scale, delta: delta ?? pointSize)
         return withSize(scaledSize)
+    }
+    
+    class func systemFont(ofSize size: CGFloat, scale: CGFloat) -> UIFont {
+        return self.systemFont(ofSize: size.scale(scale, delta: size))
     }
 }
 
