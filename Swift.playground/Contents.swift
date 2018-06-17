@@ -11,6 +11,13 @@ extension UILabel {
     }
 }
 
+extension UIFont {
+    func pointSizeScaled(_ scale: CGFloat, delta: CGFloat? = nil) -> UIFont {
+        let scaledSize = pointSize.scale(scale, delta: delta ?? pointSize)
+        return withSize(scaledSize)
+    }
+}
+
 extension CGFloat {
     func scale(_ scale: CGFloat, delta originDelta: CGFloat = 4, roundingRule: FloatingPointRoundingRule? = nil) -> CGFloat {
         let delta: CGFloat = scale >= 1.0 ? originDelta : self >= originDelta ? originDelta : self
